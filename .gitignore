@@ -1,0 +1,6 @@
+.*
+.envrc
+!.gitignore
+!.github
+!.devcontainer/*.json
+!.devcontainer/Dockerfile*

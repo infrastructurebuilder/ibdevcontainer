@@ -1,0 +1,13 @@
+/.{
+  "build": {
+    "dockerfile": "../Dockerfile"
+  },
+  "mounts": [
+    "source=ibdc-persisted,target=/persisted,type=volume",
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.m2,target=/root/.m2,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.aws,target=/root/.awsCOPY,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.gnupg,target=/root/.gnupg,type=bind,consistency=cached"
+  ]
+}
