@@ -58,8 +58,10 @@ RUN <<ASDF
     # serverless update
 ASDF
 RUN echo 'eval "$(starship init bash)"' >> ${HOME}/.bashrc  
+ENV MAVEN_HOME "${HOME}/.sdkman/candidates/maven/current"
+ENV JAVA_HOME "${HOME}/.sdkman/candidates/java/current"
 RUN <<SDKMAN
-    JDK_VERSION="21.0.2-open"
+    JDK_VERSION="17.0.12-amzn"
     JDK_GRAAL_VERSION="21.0.4-graal"
     MAVEN_VERSION="3.9.8"
     LIQUIBASE_VERSION="4.29.0"
@@ -70,9 +72,10 @@ RUN <<SDKMAN
     # echo 'export SDKMAN_DIR="$HOME/.sdkman"' >> ${HOME}/.bashrc
     # echo '[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"' >> ${HOME}/.bashrc
     source "$HOME/.sdkman/bin/sdkman-init.sh"
-    sdk install java ${JDK_GRAAL_VERSION}
+    # sdk install java ${JDK_GRAAL_VERSION}
+    # sdk install java "21.0.2-open"
     sdk install java ${JDK_VERSION}
-    sdk install java 
+    # sdk install java 
     sdk default java ${JDK_VERSION}
     sdk install maven #{MAVEN_VERSION}
     sdk default maven ${MAVEN_VERSION}
@@ -81,7 +84,7 @@ RUN <<SDKMAN
     sdk install layrry
     sdk install liquibase ${LIQUIBASE_VERSION}
     sdk default liquibase ${LIQUIBASE_VERSION}
-    sdk install quarkus ${QUARKUS_VERSION} 
-    sdk default quarkus ${QUARKUS_VERSION}
-    sdk install springboot # Need version probably from ibparent, etc
+    # sdk install quarkus ${QUARKUS_VERSION} 
+    # sdk default quarkus ${QUARKUS_VERSION}
+    # sdk install springboot # Need version probably from ibparent, etc
 SDKMAN
