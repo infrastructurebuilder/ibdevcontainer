@@ -61,6 +61,8 @@ RUN echo 'eval "$(starship init bash)"' >> ${HOME}/.bashrc
 ENV MAVEN_HOME "${HOME}/.sdkman/candidates/maven/current"
 ENV JAVA_HOME "${HOME}/.sdkman/candidates/java/current"
 RUN <<SDKMAN
+    echo 'export MAVEN_HOME="${SDKMAN_CANDIDATES_DIR}/maven/current"' >> ${HOME}/.bashrc
+    echo 'export JAVA_HOME="${SDKMAN_CANDIDATES_DIR}/java/current"' >> ${HOME}/.bashrc
     JDK_VERSION="17.0.12-amzn"
     JDK_GRAAL_VERSION="21.0.4-graal"
     MAVEN_VERSION="3.9.8"
